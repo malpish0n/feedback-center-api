@@ -52,3 +52,10 @@ when@prod:
                     adapter: cache.app
                 doctrine.system_cache_pool:
                     adapter: cache.system
+when@test:
+    doctrine:
+        dbal:
+            url: 'sqlite:///%kernel.project_dir%/var/data.db'
+        orm:
+            auto_generate_proxy_classes: true
+            enable_lazy_ghost_objects: true

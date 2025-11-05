@@ -16,7 +16,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class UserController extends AbstractController
 {
-    // Rejestracja
     #[Route('/api/register', name: 'api_register', methods: ['POST'])]
     public function register(Request $request, UserService $userService): JsonResponse
     {
@@ -27,7 +26,7 @@ class UserController extends AbstractController
         }
 
         try {
-            $userService->createUser($data); // hashowanie i zapisywanie
+            $userService->createUser($data);
         } catch (\Exception $e) {
             return $this->json(['error' => $e->getMessage()], 400);
         }
@@ -35,7 +34,6 @@ class UserController extends AbstractController
         return $this->json(['status' => 'User registered'], 201);
     }
 
-    // Logowanie - zwraca JWT
     #[Route('/api/login', name: 'api_login', methods: ['POST'])]
     public function login(
         Request $request,
@@ -63,7 +61,6 @@ class UserController extends AbstractController
         return $this->json(['token' => $token], 200);
     }
 
-    // Profil aktualnie zalogowanego
     #[Route('/api/profile', name: 'api_profile', methods: ['GET'])]
     public function profile(): JsonResponse
     {

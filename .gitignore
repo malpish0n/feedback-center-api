@@ -3,6 +3,11 @@
 /.env.local
 /.env.local.php
 /.env.*.local
+.env
+.env.dev
+.env.test
+.env.test.local
+
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
@@ -17,3 +22,8 @@
 /phpunit.xml
 /.phpunit.cache/
 ###< phpunit/phpunit ###
+/config/jwt/private.pem
+/config/jwt/public.pem
+/config/jwt/private2.pem
+
+.DS_Store
