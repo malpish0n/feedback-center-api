@@ -1,5 +1,6 @@
 ![Build](https://github.com/malpish0n/feedbackcenter/actions/workflows/symfony.yml/badge.svg)
 ![Coverage](https://img.shields.io/codecov/c/github/malpish0n/feedback-center-api)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/90e91df6f52d4297bdbe67bd8a59f33d)](https://app.codacy.com/gh/malpish0n/feedback-center-api/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 # FeedbackCenter API
 
