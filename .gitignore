@@ -27,3 +27,4 @@
 /config/jwt/private2.pem
 
 .DS_Store
+coverage-report/
