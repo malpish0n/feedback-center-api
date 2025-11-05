@@ -19,6 +19,10 @@ class UserService
 
     public function createUser(array $data): void
     {
+        if (empty($data['email']) || empty($data['password']) || empty($data['nickname'])) {
+            throw new \InvalidArgumentException('Missing required fields');
+        }
+
         $user = new User();
         $user->setEmail($data['email']);
         $user->setNickname($data['nickname']);
@@ -28,4 +32,5 @@ class UserService
         $this->em->persist($user);
         $this->em->flush();
     }
+
 }
