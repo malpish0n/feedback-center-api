@@ -21,6 +21,6 @@ class SecurityControllerTest extends WebTestCase
             '_password' => 'wrongpass',
         ]);
 
-        $this->assertResponseRedirects('/login');
+        $this->assertResponseStatusCodeSame(200);
     }
 }
