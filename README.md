@@ -3,6 +3,8 @@
 
 # FeedbackCenter API
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d56287580cb4916a1bfa47c80777721)](https://app.codacy.com/gh/malpish0n/feedback-center-api?utm_source=github.com&utm_medium=referral&utm_content=malpish0n/feedback-center-api&utm_campaign=Badge_Grade)
+
 ### Authors:
 
 Arkadiusz Kasztelan
