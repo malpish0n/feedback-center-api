@@ -13,11 +13,6 @@ jobs:
   symfony-tests:
     runs-on: ubuntu-latest
 
-    env:
-      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
-      JWT_PUBLIC_KEY: ${{ secrets.JWT_PUBLIC_KEY }}
-      JWT_PASSPHRASE: ${{ secrets.JWT_PASSPHRASE }}
-
     steps:
       - uses: actions/checkout@v4
 
@@ -50,9 +45,18 @@ jobs:
           mkdir -p data
           touch data/database.sqlite
 
+      - name: Generate test JWT keys
+        run: |
+          mkdir -p config/jwt
+          openssl genrsa -out config/jwt/test_private.pem 2048
+          openssl rsa -in config/jwt/test_private.pem -pubout -out config/jwt/test_public.pem
+
       - name: Run PHPUnit with coverage
         env:
           DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
+          JWT_SECRET_KEY: config/jwt/test_private.pem
+          JWT_PUBLIC_KEY: config/jwt/test_public.pem
+          JWT_PASSPHRASE: ''
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload coverage to Codecov
@@ -62,9 +66,3 @@ jobs:
           files: ./coverage.xml
           fail_ci_if_error: true
           verbose: true
-      - name: Generate test JWT keys
-        run: |
-          mkdir -p config/jwt
-          openssl genrsa -out config/jwt/test_private.pem 2048
-          openssl rsa -in config/jwt/test_private.pem -pubout -out config/jwt/test_public.pem
-
