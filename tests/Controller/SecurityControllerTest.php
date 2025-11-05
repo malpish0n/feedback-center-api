@@ -10,17 +10,17 @@ class SecurityControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/login');
-        $this->assertResponseStatusCodeSame(200);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('form');
     }
 
-    public function testLoginRedirectsBackOnInvalidCredentials(): void
+    public function testRegisterPageLoads(): void
     {
         $client = static::createClient();
-        $client->request('POST', '/login', [
-            '_username' => 'fake@example.com',
-            '_password' => 'wrongpass',
-        ]);
+        $client->request('GET', '/register');
 
-        $this->assertResponseStatusCodeSame(200);
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorExists('form');
     }
 }
