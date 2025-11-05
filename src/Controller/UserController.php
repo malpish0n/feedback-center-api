@@ -67,7 +67,7 @@ class UserController extends AbstractController
         $user = $this->getUser();
 
         if (!$user instanceof User) {
-            throw new AccessDeniedException('You must be logged in');
+            return $this->json(['error' => 'You must be logged in'], 401);
         }
 
         return $this->json([
@@ -77,21 +77,19 @@ class UserController extends AbstractController
         ]);
     }
 
-    // Wylogowanie
     #[Route('/api/logout', name: 'api_logout', methods: ['POST'])]
     public function logout(): JsonResponse
     {
         return $this->json(['status' => 'Logged out'], 200);
     }
 
-    // Usuwanie konta
     #[Route('/api/users/delete', name: 'api_user_delete', methods: ['DELETE'])]
     public function delete(EntityManagerInterface $em): JsonResponse
     {
         $user = $this->getUser();
 
         if (!$user instanceof User) {
-            throw new AccessDeniedException('You must be logged in');
+            return $this->json(['error' => 'You must be logged in'], 401);
         }
 
         $em->remove($user);
@@ -99,8 +97,8 @@ class UserController extends AbstractController
 
         return $this->json(['status' => 'User deleted'], 200);
     }
-    
-    // Edycja użytkownika
+
+
     #[Route('/api/users/edit', name: 'user_edit', methods: ['PUT'])]
     public function editUser(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): JsonResponse
     {
