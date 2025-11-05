@@ -32,6 +32,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
+    - name: Create .env for CI
+      run: |
+        echo "APP_ENV=test" > .env
+        echo "DATABASE_URL=sqlite:///%kernel.project_dir%/data/database.sqlite" >> .env
+
     - name: Install dependencies
       run: composer install --no-interaction --no-progress --prefer-dist
 
