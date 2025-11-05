@@ -62,3 +62,9 @@ jobs:
           files: ./coverage.xml
           fail_ci_if_error: true
           verbose: true
+      - name: Generate test JWT keys
+        run: |
+          mkdir -p config/jwt
+          openssl genrsa -out config/jwt/test_private.pem 2048
+          openssl rsa -in config/jwt/test_private.pem -pubout -out config/jwt/test_public.pem
+
