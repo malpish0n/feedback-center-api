@@ -11,3 +11,7 @@ if (method_exists(Dotenv::class, 'bootEnv')) {
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
 }
+
+@unlink(__DIR__ . '/../var/data.db');
+exec('php '.__DIR__.'/../bin/console doctrine:schema:create --env=test --quiet');
+
