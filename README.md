@@ -1,5 +1,5 @@
 ![Build](https://github.com/malpish0n/feedbackcenter/actions/workflows/symfony.yml/badge.svg)
-![Coverage](https://img.shields.io/codecov/c/github/malpish0n/feedbackcenter)
+![Coverage](https://img.shields.io/codecov/c/github/malpish0n/feedback-center-api)
 
 # FeedbackCenter API
 
